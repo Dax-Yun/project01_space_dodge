@@ -3,7 +3,7 @@ import time
 import random
 pygame.font.init()
 
-WIDTH, HEIGHT = 1000, 800
+WIDTH, HEIGHT = 400, 200
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Space Dodge")
 # Define background color (RGB format, e.g., light blue)
