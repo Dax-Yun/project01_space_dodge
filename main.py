@@ -68,11 +68,11 @@ def main():
                 run = False
                 break
 
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_LEFT] and player.x - PLAYER_VEL >= 0:
-            player.x -= PLAYER_VEL
-        if keys[pygame.K_RIGHT] and player.x + PLAYER_VEL + player.width <= WIDTH:
-            player.x += PLAYER_VEL
+        # Control player by mouse 
+        pos = pygame.mouse.get_pos()
+        pressed = pygame.mouse.get_pressed()
+        if pressed[0]:
+            player.x = pos[0] if pos[0] + player.width <= WIDTH else WIDTH - player.width
 
         for star in stars[:]:
             star.y += STAR_VEL
