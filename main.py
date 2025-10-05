@@ -41,7 +41,6 @@ def main():
                          PLAYER_WIDTH, PLAYER_HEIGHT)
     clock = pygame.time.Clock()
     start_time = time.time()
-    elapsed_time = 0
 
     star_add_increment = 2000
     star_count = 0
@@ -70,9 +69,12 @@ def main():
 
         # Control player by mouse 
         pos = pygame.mouse.get_pos()
-        pressed = pygame.mouse.get_pressed()
-        if pressed[0]:
-            player.x = pos[0] if pos[0] + player.width <= WIDTH else WIDTH - player.width
+        if pos[0] <= 0:
+            player.x = 0
+        elif pos[0] + player.width >= WIDTH:
+            player.x = WIDTH - player.width
+        else:
+            player.x = pos[0]
 
         for star in stars[:]:
             star.y += STAR_VEL
