@@ -7,21 +7,22 @@ WIDTH, HEIGHT = 1000, 800
 WIN = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Space Dodge")
 # Define background color (RGB format, e.g., light blue)
-background_color = (100, 149, 237)  # cornflower blue
-WIN.fill(background_color)
-
-# Update the display
-pygame.display.flip()
-time.sleep(10)
+# background_color = (100, 149, 237)  # cornflower blue
+# WIN.fill(background_color)
+#
+# # Update the display
+# pygame.display.flip()
+# time.sleep(10)
 
 BG = pygame.transform.scale(pygame.image.load("./resources/bg.jpeg"), (WIDTH, HEIGHT))
 
 PLAYER_WIDTH = 40
 PLAYER_HEIGHT = 60
-
+craft = pygame.transform.scale(pygame.image.load("./resources/crafts.jpg"), (PLAYER_WIDTH,PLAYER_HEIGHT))
 PLAYER_VEL = 5
 STAR_WIDTH = 10
 STAR_HEIGHT = 20
+star_image = pygame.transform.scale(pygame.image.load("./resources/star.jpg"), (STAR_WIDTH,STAR_HEIGHT))
 STAR_VEL = 3
 
 FONT = pygame.font.SysFont("comicsans", 30)
@@ -33,11 +34,12 @@ def draw(player, elapsed_time, stars):
     time_text = FONT.render(f"Time: {round(elapsed_time)}s", 1, "white")
     WIN.blit(time_text, (10, 10))
 
-    pygame.draw.rect(WIN, "red", player)
+    #pygame.draw.rect(WIN, "red", player)
+    WIN.blit(craft, player)
 
     for star in stars:
-        pygame.draw.rect(WIN, "white", star)
-
+        #pygame.draw.rect(WIN, "white", star)
+        WIN.blit(star_image, star)
     pygame.display.update()
 
 
